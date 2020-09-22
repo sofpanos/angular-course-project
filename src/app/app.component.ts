@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  currentRoute = '';
+  routeChanged(route: string): void {
+    this.currentRoute = route;
+  }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @Output() routeChange = new EventEmitter<string>();
+
+  recipesSelected = false;
+  shoppingListSelected = false;
+
+  constructor() {
+  }
+
 
   ngOnInit(): void {
+  }
+
+  onSelect(selection: string) {
+    this.recipesSelected = selection === 'recipes';
+    this.shoppingListSelected = selection === 'shopping-list';
+    this.routeChange.emit(selection);
   }
 
 }
